@@ -1,0 +1,12 @@
+__pycache__/
+.idea/
+/.python-version
+/venv/
+.DS_Store
+**/.DS_Store
+.venv/
+venv/
+node_modules/
+.env
+.mypy_cache/
+dist

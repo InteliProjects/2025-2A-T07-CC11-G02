@@ -1,0 +1,172 @@
+fluxos:
+  mensagem_sistema:
+    estado: mensagem_sistema
+    slots_obrigatorios: []
+    prox_acao: encerrar_ou_recomendar
+
+  nao_identificado:
+    estado: nao_identificado
+    resposta_padrao: "Desculpe, não entendi muito bem. Pode explicar com mais detalhes?"
+    prox_acao: encerrar_ou_recomendar
+
+  saudacao:
+    estado: saudacao
+    resposta_padrao: "Oi! Tudo bem? Aqui é do time Curadobia ✨ Como posso te ajudar hoje?"
+    prox_acao: encerrar_ou_recomendar
+
+  agradecimento:
+    estado: agradecimento
+    resposta_padrao: "Obrigada! Sigo aqui pro que você precisar 💕"
+    prox_acao: encerrar_ou_recomendar
+
+  reacao_emocional:
+    estado: reacao_emocional
+    resposta_padrao: "Amei! 💖 Se eu puder ajudar com algo, é só me dizer."
+    prox_acao: encerrar_ou_recomendar
+
+  confirmacao:
+    estado: confirmacao
+    resposta_padrao: "Perfeito! Vou seguir com isso pra você. Qualquer coisa, me chama 😊"
+    acao_final: aplicar_acao_pendente_ou_acusar_recebimento
+    prox_acao: encerrar_ou_recomendar
+
+  duvida_produto:
+    estado: duvida_produto
+    slots_obrigatorios:
+      - produto
+    perguntas_slots:
+      produto: "Sobre qual produto você quer saber?"
+      tamanho: "Qual tamanho você procura? (P/M/G/GG ou numeração)"
+      variante: "Alguma cor/modelo específico?"
+      quantidade: "Quantas unidades?"
+    acao_final: consultar_catalogo_produto
+    prox_acao: encerrar_ou_recomendar
+
+  solicitacao_informacao:
+    estado: solicitacao_informacao
+    slots_obrigatorios:
+      - descricao
+    perguntas_slots:
+      descricao: "Sobre o que você deseja mais informações?"
+    acao_final: responder_solicitacao_informacao
+    prox_acao: encerrar_ou_recomendar
+
+  rastreamento_pedido:
+    estado: rastreamento_pedido
+    slots_obrigatorios:
+      - identificador_pedido
+    perguntas_slots:
+      identificador_pedido: "Qual o ID do pedido (ou e-mail/CPF) para eu verificar?"
+    acao_final: consultar_status_pedido_e_enviar_rastreio
+    prox_acao: encerrar_ou_recomendar
+
+  reposicao_estoque:
+    estado: reposicao_estoque
+    slots_obrigatorios:
+      - produto
+    perguntas_slots:
+      produto: "Qual produto você quer saber sobre reposição?"
+      tamanho: "Qual tamanho/numeração você procura?"
+      variante: "Alguma cor/modelo específico?"
+    acao_final: consultar_reposicao_estoque
+    prox_acao: encerrar_ou_recomendar
+
+  solicitacao_contato:
+    estado: solicitacao_contato
+    slots_obrigatorios:
+      - meio_contato
+    perguntas_slots:
+      meio_contato: "Prefere que a gente te contate por WhatsApp, e-mail ou telefone? Pode deixar o contato?"
+      descricao: "Quer deixar mais detalhes do assunto?"
+    acao_final: registrar_solicitacao_contato
+    prox_acao: encerrar_ou_recomendar
+
+  parceria_comercial:
+    estado: parceria_comercial
+    slots_obrigatorios:
+      - descricao
+      - meio_contato
+    perguntas_slots:
+      descricao: "Pode me contar resumidamente sobre a parceria proposta?"
+      meio_contato: "Qual o melhor contato para nosso time comercial te retornar?"
+    acao_final: encaminhar_para_comercial
+    prox_acao: encerrar_ou_recomendar
+
+  interesse_produto:
+    estado: interesse_produto
+    slots_obrigatorios:
+      - produto
+    perguntas_slots:
+      produto: "Qual produto te interessou?"
+      tamanho: "Qual tamanho pretende? (P/M/G/GG ou numeração)"
+      variante: "Alguma cor/modelo específico?"
+    acao_final: criar_lead_interesse_produto
+    prox_acao: encerrar_ou_recomendar
+
+  troca_devolucao:
+    estado: troca_devolucao
+    slots_obrigatorios:
+      - identificador_pedido
+      - produto
+      - motivo_troca
+      - tamanho
+    perguntas_slots:
+      identificador_pedido: "Qual o ID do pedido (ou e-mail/CPF)?"
+      produto: "Qual produto deseja trocar/devolver?"
+      tamanho: "Qual tamanho atual e para qual tamanho quer trocar?"
+      motivo_troca: "Qual o motivo da troca/devolução?"
+    acao_final: iniciar_fluxo_troca_ou_devolucao
+    prox_acao: encerrar_ou_recomendar
+
+  problema_tecnico:
+    estado: problema_tecnico
+    slots_obrigatorios:
+      - descricao
+    perguntas_slots:
+      descricao: "Pode descrever o problema e, se possível, enviar prints?"
+    acao_final: abrir_chamado_tecnico
+    prox_acao: encerrar_ou_recomendar
+
+  evento_presencial:
+    estado: evento_presencial
+    resposta_padrao: "Realizamos eventos presenciais 2x/ano para conhecer as peças de perto. Posso te avisar do próximo?"
+    acao_final: informar_evento_presencial
+    prox_acao: encerrar_ou_recomendar
+
+  identificar_intencao:
+    estado: identificar_intencao
+    descricao: "Roteia para a intenção apropriada com base na última mensagem do cliente"
+    transicoes_por_intencao:
+      saudacao: saudacao
+      agradecimento: agradecimento
+      reacao_emocional: reacao_emocional
+      confirmacao: confirmacao
+      duvida_produto: duvida_produto
+      solicitacao_informacao: solicitacao_informacao
+      rastreamento_pedido: rastreamento_pedido
+      reposicao_estoque: reposicao_estoque
+      solicitacao_contato: solicitacao_contato
+      parceria_comercial: parceria_comercial
+      interesse_produto: interesse_produto
+      troca_devolucao: troca_devolucao
+      problema_tecnico: problema_tecnico
+      evento_presencial: evento_presencial
+      mensagem_sistema: mensagem_sistema
+    fallback: nao_identificado
+    prox_acao: encerrar_ou_recomendar
+
+  encerrar_ou_recomendar:
+    estado: encerrar_ou_recomendar
+    resposta_padrao: "Posso te ajudar com mais alguma coisa? 💕"
+    pergunta: "Algo mais que eu possa te ajudar?"
+    opcoes:
+      sim: identificar_intencao
+      nao: encerramento
+    prox_acao: encerramento
+
+  encerramento:
+    estado: encerramento
+    resposta_padrao: "Obrigada por falar com a Curadobia! Se precisar, é só chamar 💕"
+    acao_final: encerrar_atendimento
+
+

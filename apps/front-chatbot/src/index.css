@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-neutral-200;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-fashion-light via-white to-fashion-cream text-primary-900 font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .chat-container {
+    @apply flex flex-col h-screen max-w-5xl mx-auto bg-white/80 backdrop-blur-xl shadow-fashion-lg border border-white/20;
+  }
+  
+  .chat-header {
+    @apply bg-primary-900 text-white p-4 flex items-center justify-between;
+  }
+  
+  .chat-messages {
+    @apply flex-1 overflow-y-auto p-4 space-y-4 bg-gradient-to-b from-white/70 to-fashion-light/50;
+  }
+  
+  .chat-input-container {
+    @apply border-t border-white/20 p-4 bg-white/60 backdrop-blur-sm;
+  }
+  
+  .message-bubble {
+    @apply max-w-sm lg:max-w-lg px-5 py-4 rounded-3xl relative;
+  }
+  
+  .message-user {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 text-white ml-auto shadow-fashion;
+  }
+  
+  .message-bot {
+    @apply bg-white/90 backdrop-blur-sm text-primary-900 mr-auto shadow-glass border border-white/30;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 bg-white/60 border border-primary-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-300 resize-none min-h-[36px] max-h-24 text-primary-900 placeholder-primary-400 transition-all duration-200 text-sm;
+  }
+  
+  .input-field:focus {
+    @apply shadow-glow bg-white/80;
+  }
+  
+  
+  .typing-indicator {
+    @apply flex items-center space-x-2 text-primary-600;
+  }
+  
+  .typing-dot {
+    @apply w-2 h-2 bg-secondary-500 rounded-full animate-pulse;
+  }
+  
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+  
+  .fashion-card {
+    @apply bg-white/80 backdrop-blur-sm border border-white/30 shadow-fashion hover:shadow-fashion-lg transition-all duration-300;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+  }
+  
+  .shimmer-effect {
+    @apply relative overflow-hidden;
+  }
+  
+  .shimmer-effect::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 animate-shimmer;
+  }
+}

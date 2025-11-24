@@ -1,0 +1,45 @@
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.Python
+**/venv/
+**/env/
+**/ENV/
+**/.venv/
+**/*.egg-info/
+**/dist/
+**/build/
+**/.mypy_cache/
+**/.pytest_cache/
+**/.coverage
+**/.ruff_cache/
+
+# Node
+**/node_modules/
+**/dist/
+**/.next/
+**/out/
+**/.turbo/
+
+# IDE
+**/.vscode/
+**/.idea/
+**/.claude/
+**/*.swp
+**/*.swo
+**/*~
+
+# OS
+**/.DS_Store
+**/Thumbs.db
+
+# Git
+**/.git/
+**/.gitignore
+
+# Other
+**/*.log
+**/cache/
+**/.cache/
